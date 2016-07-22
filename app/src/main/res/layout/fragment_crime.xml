@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
 
     <EditText
         android:id="@+id/crime_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hint="@string/crime_title_hint"/>
+        android:layout_height="150dp"
+        android:hint="@string/crime_title_hint" />
 
 </LinearLayout>
