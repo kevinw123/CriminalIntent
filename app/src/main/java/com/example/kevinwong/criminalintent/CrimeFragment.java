@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.text.Editable;
 import android.widget.Button;
 import android.widget.CheckBox;
+import java.text.SimpleDateFormat;
 
 public class CrimeFragment extends Fragment {
 
@@ -20,6 +21,8 @@ public class CrimeFragment extends Fragment {
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
+    private SimpleDateFormat formatter;
+
 
     public CrimeFragment() {
         // Required empty public constructor
@@ -56,7 +59,8 @@ public class CrimeFragment extends Fragment {
         });
 
         mDateButton = (Button)v.findViewById(R.id.crime_date);
-        mDateButton.setText(mCrime.getDate().toString());
+        formatter = new SimpleDateFormat("EEEE, MMM d yyyy");
+        mDateButton.setText(formatter.format(mCrime.getDate()).toString());
         mDateButton.setEnabled(false);
 
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
