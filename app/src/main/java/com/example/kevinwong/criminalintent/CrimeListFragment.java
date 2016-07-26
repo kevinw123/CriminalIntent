@@ -16,6 +16,7 @@ import android.app.ListFragment;
 import android.widget.TextView;
 import android.widget.CheckBox;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class CrimeListFragment extends Fragment {
 
@@ -64,7 +65,8 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View v){
-            Toast.makeText(getActivity(), mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
+            Intent intent = CrimeActivity.newIntent(getActivity(),mCrime.getId());
+            startActivity(intent);
         }
     }
 
