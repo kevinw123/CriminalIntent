@@ -23,16 +23,24 @@ public class CrimeFragment extends Fragment {
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
     private SimpleDateFormat formatter;
-
+    public static final String ARG_CRIME_ID = "crime_id";
 
     public CrimeFragment() {
         // Required empty public constructor
     }
 
+    public static CrimeFragment newInstance(UUID crimeId) {
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_CRIME_ID, crimeId);
+        CrimeFragment fragment = new CrimeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID crimeId = (UUID) getActivity().getIntent().getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
+        UUID crimeId = (UUID)getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
     }
 
@@ -46,16 +54,14 @@ public class CrimeFragment extends Fragment {
         mTitleField.setText(mCrime.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence c, int start, int before, int count) {
-                    mCrime.setTitle(c.toString());
-                }
+                mCrime.setTitle(c.toString());
+            }
 
-            public void beforeTextChanged(CharSequence c, int start, int count, int after)
-            {
+            public void beforeTextChanged(CharSequence c, int start, int count, int after) {
 
             }
 
-            public void afterTextChanged(Editable c)
-            {
+            public void afterTextChanged(Editable c) {
 
             }
 
